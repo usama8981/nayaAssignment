@@ -43,13 +43,10 @@ class ItemCollectionViewCell: UICollectionViewCell {
             newLabel.superview?.isHidden = true
             saleLabel.superview?.isHidden = true
         }
-        if item.badges.count == 1{
-            if item.badges.contains("NEW"){
-                saleLabel.superview?.isHidden = true
-            }
-            else{
-                newLabel.superview?.isHidden = true
-            }
+        else if item.badges.count == 1{
+            saleLabel.superview?.isHidden = true
+            newLabel.superview?.isHidden = false
+            newLabel.text = item.badges[0]
         }
         else{
             newLabel.superview?.isHidden = false

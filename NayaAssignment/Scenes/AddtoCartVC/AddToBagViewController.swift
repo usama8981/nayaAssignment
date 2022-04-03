@@ -21,6 +21,7 @@ class AddToBagViewController: UIViewController {
     
     var item: ShoppingItemsViewModel
     var viewModel : ItemsListViewModel
+    
     required init?(
         coder: NSCoder,
         andViewModel viewModel: ItemsListViewModel ,
@@ -48,7 +49,12 @@ class AddToBagViewController: UIViewController {
         self.nameLabel.text = item.name
         self.priceLabel.text = "\(item.price)".paymentFormatted()
         self.orignalPriceLabel.text = "\(item.originalPrice)".paymentFormatted()
-        
+        if self.item.originalPrice > 0{
+            orignalPriceLabel.isHidden = false
+        }
+        else{
+            orignalPriceLabel.isHidden = true
+        }
         if item.isAddedToBag{
             self.addtoBagButton.isUserInteractionEnabled = false
             self.addtoBagButton.alpha = 0.5
@@ -75,10 +81,8 @@ class AddToBagViewController: UIViewController {
     
     @IBAction func addToBagAction(_ sender: Any) {
         item.isAddedToBag = !item.isAddedToBag
-        if item.isAddedToBag{
-            self.addtoBagButton.isUserInteractionEnabled = false
-            self.addtoBagButton.alpha = 0.5
-        }
+        self.addtoBagButton.isUserInteractionEnabled = false
+        self.addtoBagButton.alpha = 0.5
         viewModel.updateWishlistItemWithItem(item: item)
     }
     @objc private func tappedWishlist(_ sender: UIButton){
