@@ -92,22 +92,17 @@ final class ItemsListViewModel: NSObject {
     }
     // MARK: - UPDATE Local DATA
     func updateWishlistItem(index:Int){
-        let storedData = try! context.fetch(ShoppingItemLocal.fetchRequest())
-        guard index < currentDisplayedArticles.count else {return}
-        if let object = storedData.filter({ $0.id == currentDisplayedArticles[index].id }).first {
-            object.isAddedToWishList = !object.isAddedToWishList
-            try! self.context.save()
-            currentDisplayedArticles[index] = ShoppingItemsViewModel(item: object)
-            articlesReloadInternal.send(true)
-        }
+        
+        let item = currentDisplayedArticles[index]
+        item.isAddedToWishList = !item.isAddedToWishList
+        let updatedData = localRepo.updateWishlistItemWithItem(item: item)
+        currentDisplayedArticles[index] = ShoppingItemsViewModel(item: updatedData[index])
+        articlesReloadInternal.send(true)
+
     }
     
     func updateWishlistItemWithItem(item:ShoppingItemsViewModel){
-        let storedData = try! context.fetch(ShoppingItemLocal.fetchRequest())
-        if let object = storedData.filter({ $0.id == item.id }).first {
-            object.isAddedToWishList = item.isAddedToWishList
-            object.isAddedToBag = item.isAddedToBag
-            try! self.context.save()
-        }
+
+        _ = localRepo.updateWishlistItemWithItem(item: item)
     }
 }

@@ -18,10 +18,22 @@ final class ItemsLocalRepository : ItemsLocalRepositoryProtocol {
     private var context = (UIApplication.shared.delegate  as! AppDelegate).persistentContainer.viewContext
     
     
-    
     func fetchItems() -> [ShoppingItemLocal] {
         
         let storedData = try! context.fetch(ShoppingItemLocal.fetchRequest())
         return storedData
+    }
+    
+    
+    
+    func updateWishlistItemWithItem(item:ShoppingItemsViewModel) -> [ShoppingItemLocal]{
+        let storedData = fetchItems()
+        if let object = storedData.filter({ $0.id == item.id }).first {
+            object.isAddedToWishList = item.isAddedToWishList
+            object.isAddedToBag = item.isAddedToBag
+            try! self.context.save()
+        }
+        let updateData = self.fetchItems()
+        return updateData
     }
 }
