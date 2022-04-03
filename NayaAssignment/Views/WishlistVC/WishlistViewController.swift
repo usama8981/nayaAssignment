@@ -36,7 +36,7 @@ class WishlistViewController: UIViewController {
     private func setupView(){
         tableView.dataSource = self
         tableView.delegate = self
-        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
         let addButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: self, action: #selector(backPressed(_:)))
         addButton.tintColor = .black
         navigationItem.rightBarButtonItem = addButton

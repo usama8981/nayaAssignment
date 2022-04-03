@@ -12,6 +12,7 @@ import CoreData
 final class ItemsListViewModel: NSObject {
     
     private var repo:ItemsRemoteRepository
+    private var localRepo : ItemsLocalRepository
     private var subscriptions: Set<AnyCancellable> = []
     var articlesReloadPublisher: AnyPublisher<Bool, Never> {
         articlesReloadInternal.eraseToAnyPublisher()
@@ -30,9 +31,10 @@ final class ItemsListViewModel: NSObject {
     init(
         repo:ItemsRemoteRepository = ItemsRemoteRepository(
             service : ServiceApi()
-        )
+        ), localRepo : ItemsLocalRepository = ItemsLocalRepository()
     ) {
         self.repo = repo
+        self.localRepo = localRepo
     }
     
     func fetchItems() {
@@ -47,10 +49,14 @@ final class ItemsListViewModel: NSObject {
             }).store(in: &subscriptions)
     }
     
+    func fetchLocalItems(){
+       
+    }
+    
     // MARK: Data Transformer
     private func getDataToSaveLocal(_ items: [ShoppingItem]) -> [ShoppingItemsViewModel] {
         var result = [ShoppingItemsViewModel]()
-        let storedData = try! context.fetch(ShoppingItemLocal.fetchRequest())
+        let storedData = localRepo.fetchItems()
         print(storedData.count)
         items.forEach { (item) in
             if let object = storedData.filter({ $0.id == item.id }).first {
