@@ -84,7 +84,7 @@ final class ItemsListViewModel: NSObject {
         }
         return result
     }
-    
+    // MARK: - UPDATE Local DATA
     func updateWishlistItem(index:Int){
         let storedData = try! context.fetch(ShoppingItemLocal.fetchRequest())
         guard index < currentDisplayedArticles.count else {return}
