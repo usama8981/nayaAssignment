@@ -24,7 +24,6 @@ final class ItemsListViewModel: NSObject {
         didSet {
             currentDisplayedArticles = getDataToSaveLocal(shoppingItems)
             articlesReloadInternal.send(true)
-            
         }
     }
     // Mark: - Intializater
@@ -49,15 +48,10 @@ final class ItemsListViewModel: NSObject {
             }).store(in: &subscriptions)
     }
     
-    func fetchLocalItems(){
-       
-    }
-    
     // MARK: Data Transformer
     private func getDataToSaveLocal(_ items: [ShoppingItem]) -> [ShoppingItemsViewModel] {
         
         let results = localRepo.saveAndUpdateData(items)
-        
         return results
     }
     // MARK: - UPDATE Local DATA
@@ -68,11 +62,11 @@ final class ItemsListViewModel: NSObject {
         let updatedData = localRepo.updateWishlistItemWithItem(item: item)
         currentDisplayedArticles[index] = ShoppingItemsViewModel(item: updatedData[index])
         articlesReloadInternal.send(true)
-
+        
     }
     
     func updateWishlistItemWithItem(item:ShoppingItemsViewModel){
-
+        
         _ = localRepo.updateWishlistItemWithItem(item: item)
     }
 }

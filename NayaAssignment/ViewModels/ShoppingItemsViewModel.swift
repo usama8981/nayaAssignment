@@ -35,8 +35,5 @@ final class ShoppingItemsViewModel {
            let url = URL(string: urlString) {
             imageURL = url
         }
-        
     }
-    
-    
 }
