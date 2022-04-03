@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+
 protocol ItemsLocalRepositoryProtocol {
     func fetchItems() -> [ShoppingItemLocal]
 }

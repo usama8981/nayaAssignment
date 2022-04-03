@@ -97,6 +97,9 @@
 			isa = PBXGroup;
 			children = (
 				FA4EED2C27F8A3FE009650F1 /* Assets.xcassets */,
+				FA4EED2627F8A3FC009650F1 /* Main.storyboard */,
+				FA4EED2E27F8A3FE009650F1 /* LaunchScreen.storyboard */,
+				FA4EED2927F8A3FC009650F1 /* NayaAssignment.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -110,31 +113,24 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		FA299F8927F8A54C00E805DB /* Views */ = {
+		FA299F8927F8A54C00E805DB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				FA299F8A27F8A56200E805DB /* HomeVC */,
+				FA299F8A27F8A56200E805DB /* Items List */,
 				FA605E9227F9A10200B465A4 /* WishlistVC */,
 				FA605E8F27F97E8C00B465A4 /* AddtoCartVC */,
 			);
-			path = Views;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
-		FA299F8A27F8A56200E805DB /* HomeVC */ = {
+		FA299F8A27F8A56200E805DB /* Items List */ = {
 			isa = PBXGroup;
 			children = (
-				FA4EED2427F8A3FC009650F1 /* HomeViewController.swift */,
-				FA299FA727F8AD7E00E805DB /* Cells */,
+				FA605E9E27F9CE7100B465A4 /* VC */,
+				FA299F8C27F8A58900E805DB /* ViewModels */,
+				FA299FA727F8AD7E00E805DB /* Views */,
 			);
-			path = HomeVC;
-			sourceTree = "<group>";
-		};
-		FA299F8B27F8A57000E805DB /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				FA4EED2627F8A3FC009650F1 /* Main.storyboard */,
-			);
-			path = Storyboards;
+			path = "Items List";
 			sourceTree = "<group>";
 		};
 		FA299F8C27F8A58900E805DB /* ViewModels */ = {
@@ -177,13 +173,13 @@
 			path = ShopingModels;
 			sourceTree = "<group>";
 		};
-		FA299FA727F8AD7E00E805DB /* Cells */ = {
+		FA299FA727F8AD7E00E805DB /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				FA299FA827F8ADAA00E805DB /* ItemCollectionViewCell.swift */,
 				FA299FA927F8ADAA00E805DB /* ItemCollectionViewCell.xib */,
 			);
-			path = Cells;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		FA299FAF27F8B0C100E805DB /* ShadowView */ = {
@@ -206,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				FA4EED1F27F8A3FC009650F1 /* NayaAssignment */,
-				FA4EED2E27F8A3FE009650F1 /* LaunchScreen.storyboard */,
 				FA4EED1E27F8A3FC009650F1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -224,13 +219,10 @@
 			children = (
 				FA299F8827F8A53000E805DB /* AppDelegate */,
 				FA605E5927F8CE0200B465A4 /* Coordinator */,
-				FA299F8C27F8A58900E805DB /* ViewModels */,
-				FA299F8927F8A54C00E805DB /* Views */,
-				FA299F8B27F8A57000E805DB /* Storyboards */,
+				FA299F8927F8A54C00E805DB /* Scenes */,
 				FA299F8727F8A52200E805DB /* Resources */,
 				FA605E5E27F8CE0F00B465A4 /* Web Services */,
 				FA299F8E27F8A5A000E805DB /* Helpers */,
-				FA4EED2927F8A3FC009650F1 /* NayaAssignment.xcdatamodeld */,
 				FA4EED3127F8A3FE009650F1 /* Info.plist */,
 			);
 			path = NayaAssignment;
@@ -341,6 +333,14 @@
 				FA605E9627F9A13000B465A4 /* WishlistTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		FA605E9E27F9CE7100B465A4 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				FA4EED2427F8A3FC009650F1 /* HomeViewController.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
